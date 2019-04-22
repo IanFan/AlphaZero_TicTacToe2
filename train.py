@@ -39,7 +39,7 @@ class TrainPipeline():
         self.batch_size = 256 #512  # mini-batch size for training
         self.data_buffer = deque(maxlen=self.buffer_size)
         self.play_batch_size = 1
-        self.epochs = 3 #5  # num of train_steps for each update
+        self.epochs = 5 #5  # num of train_steps for each update
         self.kl_targ = 0.02
         self.check_freq = 50
         self.game_batch_num = 150 #1500

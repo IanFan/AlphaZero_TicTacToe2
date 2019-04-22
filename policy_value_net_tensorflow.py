@@ -18,7 +18,7 @@ class PolicyValueNet():
         # Define the tensorflow neural network
         # 1. Input:
         self.input_states = tf.placeholder(
-                tf.float32, shape=[None, 6, board_height, board_width])
+                tf.float32, shape=[None, 5, board_height, board_width])
         self.input_state = tf.transpose(self.input_states, [0, 2, 3, 1])
 
         # 在AlphaGo Zero中，输入局面首先通过了20或40个基于卷积的残差网络模块，然后再分别接上2层或3层网络得到策略和价值输出，整个网络的层数有40多或80多层，训练和预测的时候都十分缓慢。
@@ -129,7 +129,7 @@ class PolicyValueNet():
         """
         legal_positions = board.availables
         current_state = np.ascontiguousarray(board.current_state().reshape(
-                -1, 6, self.board_width, self.board_height))
+                -1, 5, self.board_width, self.board_height))
         act_probs, value = self.policy_value(current_state)
         act_probs = zip(legal_positions, act_probs[0][legal_positions])
         return act_probs, value

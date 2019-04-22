@@ -68,7 +68,7 @@ class Board(object):
         state shape: 4*width*height
         """
 
-        square_state = np.zeros((6, self.width, self.height))
+        square_state = np.zeros((5, self.width, self.height))
         if self.states:
             moves, players = np.array(list(zip(*self.states.items())))
             move_curr = moves[players == self.current_player]
@@ -83,8 +83,10 @@ class Board(object):
             # print('self.current_player', self.current_player)
             if (self.current_player == 1):
                 square_state[4][:, :] = self.p1_win_con
+                # square_state[5][:, :] = self.p2_win_con
             else:
                 square_state[4][:, :] = self.p2_win_con
+                # square_state[5][:, :] = self.p1_win_con
         if len(self.states) % 2 == 0:
             square_state[3][:, :] = 1.0  # indicate the colour to play
         return square_state[:, ::-1, :]
