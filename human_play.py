@@ -84,8 +84,8 @@ def run():
         con_set = set([-1, 1, 2])
         p1_win_con = random.sample(con_set, 1)[0]
         p2_win_con = random.sample(con_set, 1)[0]
-        # p1_win_con = 2
-        # p2_win_con = 1
+        p1_win_con = 2
+        p2_win_con = 1
         print('human', 'p1_win_con', p1_win_con, 'p2_win_con', p2_win_con)
         game.start_play(human, mcts_player, start_player=1, is_shown=1, p1_win_con=p1_win_con, p2_win_con=p2_win_con)
     except KeyboardInterrupt:
